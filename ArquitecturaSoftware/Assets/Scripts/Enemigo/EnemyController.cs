@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public Transform MovePoint;
     public Transform firePoint;
     public GameObject bulletPrefab;
-    EnemySpawner Enemigo;
+    
 
     [Header("Variables")]
     [SerializeField]
@@ -90,8 +90,7 @@ public class EnemyController : MonoBehaviour
         if(other.transform.tag == "bullet")
         {
             GameManager.singleton.puntos += 1;
-            Enemigo = GameObject.Find("EnemySpawn").GetComponent<EnemySpawner>();
-            Enemigo.isActive = false;
+          
             this.gameObject.SetActive(false);
 
         }

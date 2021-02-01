@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     public GameObject spawnEnemigo;
     ObjectPooling objectPooler;
-    public bool isActive;
+    public float contador;
+    
 
     void Start()
     {
@@ -17,17 +18,23 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        contador += Time.deltaTime;
 
-        if (!isActive)
+        if(contador >= 5)
         {
-            Invoke("spawnEnemy", 5f);
-            isActive = true;
+            
+            spawnEnemy();
+            contador = 0;
+            
         }
+        
 
     }
 
-    void spawnEnemy()
+    public void spawnEnemy()
     {
         objectPooler.SpawnFromPool("Enemy", spawnEnemigo.transform.position, Quaternion.identity);
     }
+
+    
 }

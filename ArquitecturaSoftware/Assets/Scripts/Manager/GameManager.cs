@@ -71,11 +71,13 @@ public class GameManager : MonoBehaviour
         if ((puntos >= 5) & (vidaPlayer > 0))
         {
             FinalText.text = "VICTORIA";
+            Time.timeScale = 0;
 
         }
         if((puntos < 5) & (vidaPlayer <= 0))
         {
             FinalText.text = "DERROTA";
+            Time.timeScale = 0;
         }
 
 
