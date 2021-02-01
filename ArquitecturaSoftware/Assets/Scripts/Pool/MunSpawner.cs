@@ -19,13 +19,13 @@ public class MunSpawner : MonoBehaviour
     {
         if(!isActive)
         {
-            Invoke("spawn", 2f);
+            Invoke("spawnAmmo", 2f);
             isActive = true;
         }
        
     }
 
-    void spawn()
+    void spawnAmmo()
     {
         objectPooler.SpawnFromPool("Ammo", transform.position, Quaternion.identity);
     }

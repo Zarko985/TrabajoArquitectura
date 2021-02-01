@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Enemies")]
     [SerializeField]
-    public int vidaEnemies;
     public int puntos;
 
 
@@ -50,8 +49,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         municion = 10;
-        vidaPlayer = 3;
-        vidaEnemies = 1;
+        vidaPlayer = 2;
         puntos = 0;
 
     }
@@ -70,12 +68,12 @@ public class GameManager : MonoBehaviour
         vidaText.text = "Vidas Restantes: " + vidaPlayer;
         puntosText.text = "Puntuacion: " + puntos;
 
-        if ((puntos >= 50) & (vidaPlayer > 0))
+        if ((puntos >= 5) & (vidaPlayer > 0))
         {
             FinalText.text = "VICTORIA";
 
         }
-        if((puntos < 50) & (vidaPlayer <= 0))
+        if((puntos < 5) & (vidaPlayer <= 0))
         {
             FinalText.text = "DERROTA";
         }
