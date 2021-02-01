@@ -5,10 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
+    
+
     [Header("Variables")]
     [SerializeField] 
     public float Destruccion;
-    public float damage;
+    public int damage;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,12 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
 
         }
+        if (other.transform.tag == "Player")
+        {
+            GameManager.singleton.vidaPlayer -= damage;
+            Destroy(gameObject);
+        }
+       
     }
    
 

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Shoot : MonoBehaviour
 {
 
     [Header("Componentes")]
     [SerializeField]
     public GameObject bulletPrefab;
+   
     
    
 
