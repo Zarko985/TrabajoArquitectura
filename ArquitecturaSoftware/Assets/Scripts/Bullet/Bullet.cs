@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     
-
+    // Establecimiento de las variables necesarias para el funcionamiento del script.
     [Header("Variables")]
     [SerializeField] 
     public float Destruccion;
@@ -19,12 +19,14 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
+    //Destruccion del GameObject al cabo de determinado tiempo.
     void Update()
     {
 
-        Destroy(gameObject, Destruccion);
+        DestroyGameObject();
     }
-
+    //Detecctor de colision con trigger en el que se detruye el proyectil y reduccion 
+    //de la vida del player.
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "wall")
@@ -42,7 +44,7 @@ public class Bullet : MonoBehaviour
        
     }
    
-
+    //En esta funcion llamamos a la destruccion del objeto en cierto momento.
     void DestroyGameObject()
     {
 

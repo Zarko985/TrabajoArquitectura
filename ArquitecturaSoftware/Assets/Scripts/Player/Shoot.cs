@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-
+    //Recopilacion de los componentes para 
+    //el uso del script.
     [Header("Componentes")]
     [SerializeField]
     public GameObject bulletPrefab;
    
-    
-   
-
+    //Variables que delimitan la cadencia de disparo
+    //fuerza o el punto de salida del proyectil.
     [Header("Variables")]
     [SerializeField]
     Transform firePoint;
@@ -21,6 +21,8 @@ public class Shoot : MonoBehaviour
     public float FireRate;
 
 
+    //Detecta que si la municion es 0 no permite disparar mas 
+    // y si quedan protectiles si puedes.
     // Update is called once per frame
     void Update()
     {
@@ -37,7 +39,8 @@ public class Shoot : MonoBehaviour
        
         
     }
-
+    //Establecimiento de la trayectoria y potencia del disparo
+    //mediante el uso del rigidbody.
     void disparo()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
+    //Establecimiento de los componentes necesarios para el correcto funcionamiento
+    //del controlador para establecer rutas o movimientos de este.
     [Header("Componentes")]
     [SerializeField]
     public Transform target;
@@ -12,7 +15,8 @@ public class EnemyController : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     
-
+    //Las Variables necesarias para que el controlador pueda disparar
+    //, marcar la fuerza del disparo o su cadencia.
     [Header("Variables")]
     [SerializeField]
      private float nextTimeToShoot = 0f;
@@ -24,6 +28,7 @@ public class EnemyController : MonoBehaviour
 
 
     // Start is called before the first frame update
+    //Establecimiento de la ruta de movimiento y el objetivo al que atacar.
     void Start()
     {
         target = GameObject.Find("Player").transform;
@@ -32,6 +37,7 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
+    //LLamada continua a las funciones que se le llamen.
     void Update()
     {
         lookAt();
@@ -39,7 +45,7 @@ public class EnemyController : MonoBehaviour
         disparoEnemy();
     }
 
-
+    //Funcion para marcar el punto donde debe mirar el enemigo
     void lookAt()
     {
         if (target != null)
@@ -60,7 +66,7 @@ public class EnemyController : MonoBehaviour
             InitialPosition();
         }
     }
-
+    //Posicion inicial del enemigo.
     void InitialPosition()
     {
 
@@ -68,7 +74,7 @@ public class EnemyController : MonoBehaviour
         transform.rotation = lerpRotation;
     }
 
-
+    //Establecimiento del movimiento del enemigo
     void enemyMove()
     {
         moveEnemy.position = Vector3.Lerp(moveEnemy.position, MovePoint.position, Speed * Time.deltaTime);
@@ -84,7 +90,7 @@ public class EnemyController : MonoBehaviour
 
         }
     }
-
+    //Trigger para establecer la desactivacion de los enemigos.
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "bullet")
@@ -95,7 +101,7 @@ public class EnemyController : MonoBehaviour
 
         }
     }
-
+    //Funcion para establecer el disparo del enemigo
     void disparoEnemy()
     {
         

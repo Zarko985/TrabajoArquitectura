@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour
 {
-
+    //Varibles necesarias para la creacion de las 
+    //diversas pools.
     [System.Serializable]
     public class Pool
     {
@@ -12,7 +13,8 @@ public class ObjectPooling : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
-
+    //Establecimiento del singleton que nos permitira 
+    //llamar este script y hacer la pool de objetos.
     #region Singleton
 
     public static ObjectPooling call;
@@ -24,11 +26,13 @@ public class ObjectPooling : MonoBehaviour
 
     #endregion
 
-
+    //Creacion de la lista y el diccionario de la pool.
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDict;
 
     // Start is called before the first frame update
+    //Durante el start se detectan los objetos que se tienen que
+    //instanciar de las diversas pools y dejarlos desactivados hasta que sea necesario. 
     void Start()
     {
         poolDict = new Dictionary<string, Queue<GameObject>>();
@@ -49,7 +53,8 @@ public class ObjectPooling : MonoBehaviour
         }
 
     }
-
+    //Aqui sea activa el objeto y se establece el spawner en el que tendremos que establecer el tag y la posicion del objeto
+    //adema de detectar si el objeto que deseamos instaciar tiene el tag correctamente escrito.
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion Rotaion)
     {
         if (!poolDict.ContainsKey(tag))

@@ -5,12 +5,15 @@ using UnityEngine;
 public class CharacterControler : MonoBehaviour
 {
 
+    //Componentes necesarios para el funcionamiento
+    //del script
     [Header("Componentes")]
     [SerializeField]
     public Rigidbody rb;
     public Camera cam;
     
-
+    //Variables necesarias para que el controlador
+    //pueda moverse o establecer la velocidad
     [Header("Variables")]
     [SerializeField]
     private float Speed = 5f;
@@ -28,6 +31,8 @@ public class CharacterControler : MonoBehaviour
         
     }
 
+    // Deteccion para saber en que direccion se desea 
+    // que el personaje se mueva y su vista.
     // Update is called once per frame
     void Update()
     {
@@ -36,12 +41,13 @@ public class CharacterControler : MonoBehaviour
         CameraMove();
         
     }
-
+    //Limitador de Velocidad del personaje
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * Speed * Time.fixedDeltaTime); 
     }
-
+    //Establecimiento de la vista mediante el uso de raycast para saber la posicion del raton
+    // y hacia que posicion debe girar el personaje.
     void CameraMove()
     {
         Plane playerPlane = new Plane(Vector3.up, transform.position);
